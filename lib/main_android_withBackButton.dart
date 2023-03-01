@@ -9,6 +9,14 @@ FirebaseApp? firebaseApp;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   firebaseApp = await Firebase.initializeApp(
+    //   options: const FirebaseOptions(
+    // apiKey: 'AIzaSyA_A10Kl0iAnTQuOhFvtgXoffx0QnIMLwo',
+    // appId: '1:307411138390:web:55d49f95961d6fffb2c8f7',
+    // messagingSenderId: '307411138390',
+    // projectId: 'quotes-db-9c512',
+    // authDomain: 'quotes-db-9c512.firebaseapp.com',
+    // storageBucket: 'quotes-db-9c512.appspot.com',
+    // measurementId: 'G-T0B91NDBP9',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
@@ -21,6 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Assignment - Group3',
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
       home: IntroPage(
         title: 'Welcome!',
       ),
