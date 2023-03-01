@@ -1,11 +1,7 @@
 import 'package:devops_asgnmt_group3/main.dart';
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/painting.dart';
-// import 'package:flutter/rendering.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   Widget createWidgetForTest() {
@@ -17,24 +13,24 @@ void main() {
     );
   }
 
-  testWidgets('Intro Page Verification', (WidgetTester tester) async {
+  Future<void> navigateToThoughtOfDayPage(WidgetTester tester) async {
+    await tester.tap(
+        find.widgetWithText(RadioListTile<String>, 'Read thought of the day'),
+        warnIfMissed: false);
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> navigateShowSurroundingsPage(WidgetTester tester) async {
+    await tester.tap(
+        find.widgetWithText(RadioListTile<String>, 'Show my surroundings'),
+        warnIfMissed: false);
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets('PQL Verification', (WidgetTester tester) async {
     bool backgroundCheck = false;
     await tester.pumpWidget(createWidgetForTest());
     expect(find.text('Hey there! tell us how do we call you?'), findsOneWidget);
-    // Iterable<Widget> c = tester.allWidgets;
-    // for (var w in c) {
-    //   tester.printToConsole(w.toString());
-    //   if (w.toString().startsWith('Container')) {
-    //     if (w.toString().contains("images/background_image.jpeg")) {
-    //       backgroundCheck = true;
-    //       break;
-    //     }
-    //     // tester.printToConsole(w.toString());
-    //     // tester.printToConsole("Printing Hashcode...");
-    //     // tester.printToConsole(w.hashCode.toString());
-    //   }
-    // }flutter test --coverage
-    // expect(backgroundCheck, true);
     if (tester
         .element(find.byType(Container).first)
         .toString()
@@ -42,12 +38,6 @@ void main() {
       backgroundCheck = true;
     }
     expect(backgroundCheck, true);
-    //  await tester.enterText(
-    // expect(
-    //     find.widgetWithText(
-    //         TextField, 'Hey there! tell us how do we call you?'),
-    //     findsOneWidget);
-    //text('Hey there! tell us how do we call you?'), 'Pune Pedestrian');
     await tester.enterText(
         find.widgetWithText(
             TextField, 'Hey there! tell us how do we call you?'),
@@ -61,9 +51,17 @@ void main() {
         findsOneWidget);
     expect(find.widgetWithText(RadioListTile<String>, 'Show my surroundings'),
         findsOneWidget);
-  });
 
-  // TestTextInput();
+    await navigateToThoughtOfDayPage(tester);
+    expect(find.byType(ThoughtOfDay), findsOneWidget);
+
+    // verify(mockObserver.didPush(route, previousRoute))
+    await tester.tap(find.byTooltip("Back"));
+    await tester.pumpAndSettle();
+
+    await navigateShowSurroundingsPage(tester);
+    expect(find.byType(GoogleMap), findsOneWidget);
+  });
 }
 
 void printWidgets(WidgetTester tester) {

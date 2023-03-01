@@ -194,37 +194,48 @@ class _ThoughtOfDayState extends State<ThoughtOfDay> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: const Color.fromARGB(255, 219, 244, 199),
-        child: Column(
-          children: [
-            const SizedBox(height: 30),
-            const Text(
-              "Thought of the day:",
-              style: TextStyle(fontSize: 25),
-            ),
-            const SizedBox(height: 30),
-            FutureBuilder<String>(
-                future: quote,
-                builder: (context, AsyncSnapshot<String> quoteString) {
-                  if (quoteString.hasError) {
-                    return const Text("Something Went Wrong");
-                  }
-                  // if (quoteString.hasData && !quoteString.data!.) {
-                  //   return const Text("Document does not exits!");
-                  // }
-                  if (quoteString.connectionState == ConnectionState.done) {
-                    // Map<String, dynamic> data = quoteString;
-                    quoteString.data!;
-                    return Text(
-                      quoteString.data!,
-                      style: const TextStyle(fontSize: 20),
-                    );
-                  }
-                  return const Text("Loading..");
-                })
-          ],
-        ));
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: const Text('Thought of the day!'),
+        backgroundColor: Colors.transparent,
+        leading: const BackButton(color: Colors.blue),
+      ),
+      body: Center(
+        child: Column(children: <Widget>[
+          Container(
+              color: const Color.fromARGB(255, 219, 244, 199),
+              child: Column(
+                children: [
+                  const SizedBox(height: 30),
+                  const Text(
+                    "Thought of the day:",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  const SizedBox(height: 30),
+                  FutureBuilder<String>(
+                      future: quote,
+                      builder: (context, AsyncSnapshot<String> quoteString) {
+                        if (quoteString.hasError) {
+                          return const Text("Something Went Wrong");
+                        }
+
+                        if (quoteString.connectionState ==
+                            ConnectionState.done) {
+                          // Map<String, dynamic> data = quoteString;
+                          quoteString.data!;
+                          return Text(
+                            quoteString.data!,
+                            style: const TextStyle(fontSize: 20),
+                          );
+                        }
+                        return const Text("Loading..");
+                      })
+                ],
+              ))
+        ]),
+      ),
+    );
   }
 }
 
