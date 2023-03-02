@@ -31,7 +31,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           # 11
-          flutter-version: "2.18.6"
+          flutter-version: "3.0.0"
           channel: 'stable'
       # 12
       - name: Get dependencies
@@ -39,4 +39,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Start release build
-        run: flutter build appbundle
+        run: flutter build apk
