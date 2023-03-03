@@ -1,16 +1,18 @@
-pipeline {
-    agent { label 'linux' }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '5'))
-    }
-    stages {
-        stage("Quality Gate"){
-          timeout(time: 1, unit: 'HOURS') {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                    }
-            }
+node(label:'master') {
+  try{  
+    stage('Static Analysis') {
+      echo 'Static Analysis Completed' 
+      }
+    stage("Quality Gate"){
+      timeout(time: 1, unit: 'HOURS') 
+      {
+        waitForQualityGate abortPipeline: true
+        def qg= waitForQualityGate()
+        if (qg.status!= 'OK'){
+          error "Pipeline aborted due to quality gate failure: ${qg.status}"
         }
+      }         
+      echo 'Quality Gate Passed' 
     }
+  } 
 }
