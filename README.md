@@ -7,5 +7,3 @@ PQL
 This project is built from assignment by Group 3
 
 A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
