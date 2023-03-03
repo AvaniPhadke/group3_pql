@@ -1,5 +1,4 @@
 node(label:'master') {
-  try{  
     stage('Static Analysis') {
       echo 'Static Analysis Completed' 
       }
@@ -13,6 +12,5 @@ node(label:'master') {
         }
       }         
       echo 'Quality Gate Passed' 
-    }
-  } 
+    } 
 }
