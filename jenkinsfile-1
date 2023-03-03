@@ -1,4 +1,4 @@
-node(label:'main') {
+node {
     stage('Static Analysis') {
       echo 'Static Analysis Completed' 
       }
