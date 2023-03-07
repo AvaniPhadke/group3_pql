@@ -5,5 +5,3 @@ PQL
 ## Getting Started
 
 This project is built from assignment by Group 3
-
-A few resources to get you started if this is your first Flutter project:
