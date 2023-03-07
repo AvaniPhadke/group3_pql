@@ -22,7 +22,7 @@ void main() {
 
   Future<void> navigateShowSurroundingsPage(WidgetTester tester) async {
     await tester.tap(
-        find.widgetWithText(RadioListTile<String>, 'Show my surroundings1'),
+        find.widgetWithText(RadioListTile<String>, 'Show my surroundings2'),
         warnIfMissed: false);
     await tester.pumpAndSettle();
   }
