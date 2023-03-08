@@ -9,6 +9,14 @@ FirebaseApp? firebaseApp;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   firebaseApp = await Firebase.initializeApp(
+    //   options: const FirebaseOptions(
+    // apiKey: 'AIzaSyA_A10Kl0iAnTQuOhFvtgXoffx0QnIMLwo',
+    // appId: '1:307411138390:web:55d49f95961d6fffb2c8f7',
+    // messagingSenderId: '307411138390',
+    // projectId: 'quotes-db-9c512',
+    // authDomain: 'quotes-db-9c512.firebaseapp.com',
+    // storageBucket: 'quotes-db-9c512.appspot.com',
+    // measurementId: 'G-T0B91NDBP9',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
@@ -21,6 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Assignment - Group3',
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
       home: IntroPage(
         title: 'Welcome!',
       ),
@@ -183,48 +194,37 @@ class _ThoughtOfDayState extends State<ThoughtOfDay> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        title: const Text('Thought of the day!'),
-        backgroundColor: Colors.transparent,
-        leading: const BackButton(color: Colors.blue),
-      ),
-      body: Center(
-        child: Column(children: <Widget>[
-          Container(
-              color: const Color.fromARGB(255, 219, 244, 199),
-              child: Column(
-                children: [
-                  const SizedBox(height: 30),
-                  const Text(
-                    "Thought of the day:",
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  const SizedBox(height: 30),
-                  FutureBuilder<String>(
-                      future: quote,
-                      builder: (context, AsyncSnapshot<String> quoteString) {
-                        if (quoteString.hasError) {
-                          return const Text("Something Went Wrong");
-                        }
-
-                        if (quoteString.connectionState ==
-                            ConnectionState.done) {
-                          // Map<String, dynamic> data = quoteString;
-                          quoteString.data!;
-                          return Text(
-                            quoteString.data!,
-                            style: const TextStyle(fontSize: 20),
-                          );
-                        }
-                        return const Text("Loading..");
-                      })
-                ],
-              ))
-        ]),
-      ),
-    );
+    return Container(
+        color: const Color.fromARGB(255, 219, 244, 199),
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            const Text(
+              "Thought of the day:",
+              style: TextStyle(fontSize: 25),
+            ),
+            const SizedBox(height: 30),
+            FutureBuilder<String>(
+                future: quote,
+                builder: (context, AsyncSnapshot<String> quoteString) {
+                  if (quoteString.hasError) {
+                    return const Text("Something Went Wrong");
+                  }
+                  // if (quoteString.hasData && !quoteString.data!.) {
+                  //   return const Text("Document does not exits!");
+                  // }
+                  if (quoteString.connectionState == ConnectionState.done) {
+                    // Map<String, dynamic> data = quoteString;
+                    quoteString.data!;
+                    return Text(
+                      quoteString.data!,
+                      style: const TextStyle(fontSize: 20),
+                    );
+                  }
+                  return const Text("Loading..");
+                })
+          ],
+        ));
   }
 }
 
