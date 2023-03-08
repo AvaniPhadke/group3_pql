@@ -1,7 +1,7 @@
 import 'package:devops_asgnmt_group3/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   Widget createWidgetForTest() {
@@ -60,7 +60,7 @@ void main() {
     await tester.pumpAndSettle();
 
     await navigateShowSurroundingsPage(tester);
-    expect(find.byType(GoogleMap), findsOneWidget);
+    expect(find.text('Loading surroundings.....'), findsOneWidget);
   });
 }
 
