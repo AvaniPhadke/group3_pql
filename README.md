@@ -6,4 +6,4 @@ PQL
 
 This project is built from assignment by Group 3
 
-test line
+A few resources to get you started if this is your first Flutter project:
