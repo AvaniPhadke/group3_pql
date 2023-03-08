@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-//import 'dart:js' as js;
 import 'firebase_options.dart';
 
 FirebaseApp? firebaseApp;
@@ -236,13 +234,13 @@ class DisplaySurroundings extends StatefulWidget {
 }
 
 class _DisplaySurroundingsState extends State<DisplaySurroundings> {
-  late GoogleMapController mapController;
+  // late GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(18.564220, 73.787201);
+  // final LatLng _center = const LatLng(18.564220, 73.787201);
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -251,12 +249,6 @@ class _DisplaySurroundingsState extends State<DisplaySurroundings> {
     //   // JavascriptRuntime runtime = JavascriptRuntime();
     //   js.context.callMethod('myFunction');
     // }
-    return GoogleMap(
-      onMapCreated: _onMapCreated,
-      initialCameraPosition: CameraPosition(
-        target: _center,
-        zoom: 11.0,
-      ),
-    );
+    return Text("Loading your sorroundings.....");
   }
 }

@@ -60,7 +60,7 @@ void main() {
     await tester.pumpAndSettle();
 
     await navigateShowSurroundingsPage(tester);
-    expect(find.byType(GoogleMap), findsOneWidget);
+    expect(find.text('Loading your sorroundings.....'), findsOneWidget);
   });
 }
 
