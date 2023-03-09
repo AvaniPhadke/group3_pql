@@ -244,11 +244,6 @@ class _DisplaySurroundingsState extends State<DisplaySurroundings> {
 
   @override
   Widget build(BuildContext context) {
-    // if (kIsWeb) {
-    //   // return const Text("Displaying google map");
-    //   // JavascriptRuntime runtime = JavascriptRuntime();
-    //   js.context.callMethod('myFunction');
-    // }
     return Text("Loading surroundings.....");
   }
 }
