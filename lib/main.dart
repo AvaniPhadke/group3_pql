@@ -234,14 +234,6 @@ class DisplaySurroundings extends StatefulWidget {
 }
 
 class _DisplaySurroundingsState extends State<DisplaySurroundings> {
-  // late GoogleMapController mapController;
-
-  // final LatLng _center = const LatLng(18.564220, 73.787201);
-
-  // void _onMapCreated(GoogleMapController controller) {
-  //   mapController = controller;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Text("Loading surroundings.....");
