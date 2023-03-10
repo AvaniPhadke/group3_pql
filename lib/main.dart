@@ -135,15 +135,11 @@ class _UserChoiceListState extends State<UserChoiceList> {
             value: 'SMS',
             groupValue: instruction,
             onChanged: (value) {
-              // if (kIsWeb) {
-              //   js.context.callMethod('myFunction');
-              // } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const DisplaySurroundings()),
               );
-              // }
             })
       ],
     );
