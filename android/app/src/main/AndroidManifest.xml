@@ -1,9 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.devops_asgnmt_group3">
    <application
+        android:usesCleartextTraffic="true"
+        android:allowBackup="false" 
         android:label="devops_asgnmt_group3"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"><!-- Sensitive -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
